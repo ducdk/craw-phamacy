@@ -5,8 +5,8 @@ const fs = require('fs');
 
 // DEFINE
 const FILE_INPUT = __dirname + '/result_full.json';
-const FILE_OUTPUT = __dirname + '/result/result_1.json';
-const FILE_CATE = __dirname + '/result/category_1.json';
+const FILE_OUTPUT = __dirname + '/result/result_2.json';
+const FILE_CATE = __dirname + '/result/category_2.json';
 // const FILE_SAVE = __dirname + '/media/artist/';
 
 (async() => {
@@ -31,7 +31,9 @@ const FILE_CATE = __dirname + '/result/category_1.json';
             item['Category'] = category.indexOf(item['category']) + 1;
             item['Cost'] = item['Cost'].replace('<span class="unit">đ</span>', '');
             item['Cost'] = item['Cost'].replace('.', '');
+            item['Barcode'] = '';
             item['id'] = ++index;
+            item['Code'] = 'MD' + item['id'];
             item['published_at'] = '2020-11-17T16:01:20.110Z';
             delete item['category'];
             delete item['filename'];

@@ -5,7 +5,7 @@ const fs = require('fs');
 
 // DEFINE
 const FILE_INPUT = __dirname + '/data2.json';
-const FILE_OUTPUT = __dirname + '/result_v2_3.json';
+const FILE_OUTPUT = __dirname + '/result_v3_1.json';
 const FILE_SAVE = __dirname + '/media/product/';
 
 (async() => {
@@ -48,10 +48,10 @@ const FILE_SAVE = __dirname + '/media/product/';
 
     // fill data login
     await page.waitFor('#account_username');
-    await page.$eval('#account_username', el => el.value = 'dkcarry03@mail.com');
+    await page.$eval('#account_username', el => el.value = 'dkcarry04@mail.com');
     
     await page.waitFor('#account_password');
-    await page.$eval('#account_password', el => el.value = '123qweA@');
+    await page.$eval('#account_password', el => el.value = 'daicaduc1');
 
 
     const login = await page.$('#new_account > button');
@@ -95,7 +95,7 @@ const FILE_SAVE = __dirname + '/media/product/';
                     /** get category */
                     try {
                         let c = pro.querySelector('.product-card__category > a').innerHTML;
-                        temp['category'] = (c != undefined && c.length > 0) ? c:'';
+                        temp['category'] = (c !== undefined && c.length > 0) ? c:'';
                     } catch (err) {
                         console.dir(err);
                         temp['category'] = '';
@@ -109,7 +109,8 @@ const FILE_SAVE = __dirname + '/media/product/';
                     }
                     // temp['Cost'] = pro.querySelector('.product-card__price').innerHTML;
                     temp['BasePrice'] = 0;
-                    
+                    temp['Barcode'] = '';
+
                     /** get filename */
                     temp['filename'] = pro.querySelector('.text-decoration-none').getAttribute('href').split('/')[2] + '.png';
 
@@ -121,8 +122,8 @@ const FILE_SAVE = __dirname + '/media/product/';
                     
                     /** get unit */
                     let t = pro.querySelector('.text-muted').innerText;
-                    temp['Unit'] = (t != undefined && t.length > 0) ? t.split(' ')[0]:'';
-                    temp['PackagingSize'] = (t != undefined && t.length > 0) ? t:'';
+                    temp['Unit'] = (t !== undefined && t.length > 0) ? t.split(' ')[0]:'';
+                    temp['PackagingSize'] = (t !== undefined && t.length > 0) ? t:'';
         
                     /** push to array */
                     array.push(temp);
@@ -176,7 +177,7 @@ const FILE_SAVE = __dirname + '/media/product/';
             console.dir(err);
         }
         run = i;
-        if (i >= 300) {
+        if (i >= 100) {
             break;
         }
     }
