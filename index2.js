@@ -5,7 +5,7 @@ const fs = require('fs');
 
 // DEFINE
 const FILE_INPUT = __dirname + '/data2.json';
-const FILE_OUTPUT = __dirname + '/result_v3_1.json';
+const FILE_OUTPUT = __dirname + '/result_v3_2.json';
 const FILE_SAVE = __dirname + '/media/product/';
 
 (async() => {
@@ -48,7 +48,7 @@ const FILE_SAVE = __dirname + '/media/product/';
 
     // fill data login
     await page.waitFor('#account_username');
-    await page.$eval('#account_username', el => el.value = 'dkcarry04@mail.com');
+    await page.$eval('#account_username', el => el.value = 'daicadu01@mail.com');
     
     await page.waitFor('#account_password');
     await page.$eval('#account_password', el => el.value = 'daicaduc1');
@@ -177,7 +177,7 @@ const FILE_SAVE = __dirname + '/media/product/';
             console.dir(err);
         }
         run = i;
-        if (i >= 100) {
+        if (i >= 200) {
             break;
         }
     }
